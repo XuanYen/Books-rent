@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+#cuoituan{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60vw;
+    margin: 10px auto;
+}
+.album{
+    width: 33.33%;
+    margin-bottom: 1rem;
+}
+.album_square{
+    width: 200px;
+    height: 200px;
+    background-image: url("https://loremflickr.com/320/240");
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+.overlay{
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.album_square:hover .overlay{
+    opacity: 1;
+    transition: all 0.5s;
+}
+.album_square:hover .fa-play-circle{
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+.fa-play-circle{
+    font-size: 2.5rem;
+    color: white;
+    transform: scale(0);
+}
+p{
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+}
