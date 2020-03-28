@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  .card{
+    margin: 5rem auto;
+    width: 300px;
+    border: 2px solid white;
+    border-radius: 25px;
+    box-shadow: 0 0 35px 0 rgba(0,0,0,0.6);
+    padding: 1rem 1.5rem;
+  }
+  .list img{
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+  h2{
+    color: #5b5b5b;
+  }
+  p{
+    color: #7f919f;
+    margin: 0.5rem 0;
+  }
