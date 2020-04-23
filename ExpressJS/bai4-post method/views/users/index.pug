@@ -1,0 +1,11 @@
+h1 Users
+
+a(href="/users/create") New
+//- form khong thi no se gui trang hien tai nên phai them action
+//- Khi go trong input gi thi se gan vao q
+form(action="/users/search", method="GET")
+    input(type="text", name="q")
+    button Search
+ul 
+    each user in users
+     li=user.name
