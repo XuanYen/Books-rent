@@ -10,7 +10,7 @@ const port=3000;
 
 var bookRoute=require("./routes/book.route")
 var userRoute=require("./routes/user.route")
-
+var transactionRoute=require("./routes/transaction.route")
 app.set('view engine', 'pug');
 app.set('views','./views'); 
 app.use(bodyParser.json()) // for parsing application/json
@@ -23,7 +23,7 @@ app.get('/',(req, res)=>res.render('index',{
 
 app.use('/books', bookRoute);
 app.use('/users', userRoute);
-
+app.use('/transactions',transactionRoute);
 
 // listen for requests :)
 const listener = app.listen(port, () => {

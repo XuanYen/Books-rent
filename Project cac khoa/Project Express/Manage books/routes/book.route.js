@@ -12,7 +12,7 @@ router.get('/create',(req,res)=>res.render('books/create'))
 router.post('/create',(req,res)=>{
   req.body.id=shortid.generate();
   db.get('books').push(req.body).write()
-  res.redirect('');
+  res.redirect('/books');
 })
 
 router.get('/:id',(req,res)=>{
