@@ -1,9 +1,11 @@
-h1 Update user info
-form(action="/users/"+user.id+"/update", method="POST")
-        label Name
-        input(name="name", type="text")
-        label Age
-        input(name="age", type="text")
-        button Update
-        
+extends ../layouts/common
+block content
+        h1 Update user info
+        form(action="/users/"+user.id+"/update", method="POST")
+                label Name
+                input(name="name", type="text")
+                label Age
+                input(name="age", type="text")
+                button Update
+                
         

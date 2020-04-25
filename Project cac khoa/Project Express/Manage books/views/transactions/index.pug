@@ -1,15 +1,17 @@
-h1 Transactions
+extends ../layouts/common
+block content
+  h1 Transactions
 
-a(href="/transactions/create") Create new transactions
+  a(href="/transactions/create") Create new transactions
 
-ul
-  each transaction in transactions
-   li 
-    span Book title:
-    b=transaction.bookTitle
-    br
-    span User name:
-    b=transaction.userName
-    br
-    a(href="/transactions/"+transaction.id+"/complete") isCompleted
-    b=transaction.isCompleted
+  ul
+    each transaction in transactions
+    li 
+      span Book title:
+      b=transaction.bookTitle
+      br
+      span User name:
+      b=transaction.userName
+      br
+      a(href="/transactions/"+transaction.id+"/complete") isCompleted
+      b=transaction.isCompleted

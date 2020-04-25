@@ -1,9 +1,11 @@
-h1 Status transaction
-span=transaction.isCompleted
+extends ../layouts/common
+block content
+  h1 Status transaction
+  span=transaction.isCompleted
 
-form(action="/transactions/"+transaction.id+"/complete", method="POST")
-    label Change status
-    select(name="isCompleted")
-      option(value=transaction.isCompleted)=transaction.isCompleted
-      option(value=transaction.isCompleted)=!transaction.isCompleted
-    button Confirm
+  form(action="/transactions/"+transaction.id+"/complete", method="POST")
+      label Change status
+      select(name="isCompleted")
+        option(value=transaction.isCompleted)=transaction.isCompleted
+        option(value=transaction.isCompleted)=!transaction.isCompleted
+      button Confirm

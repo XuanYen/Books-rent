@@ -1,9 +1,11 @@
-h1=book.title
-p=book.description
-button
-    a(href="/books/"+book.id+"/delete", style="color:black") Delete
-div(style="margin-top: .5rem")
-    form(action="/books/"+book.id+"/update", method="POST")
-        button(style="text-decoration:underline") Change title 
-        input(name="title", type="text")
-    
+extends ../layouts/common
+block content
+    h1=book.title
+    p=book.description
+    button
+        a(href="/books/"+book.id+"/delete", style="color:black") Delete
+    div(style="margin-top: .5rem")
+        form(action="/books/"+book.id+"/update", method="POST")
+            button(style="text-decoration:underline") Change title 
+            input(name="title", type="text")
+        

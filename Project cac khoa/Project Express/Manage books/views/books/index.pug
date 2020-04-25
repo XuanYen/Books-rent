@@ -1,10 +1,12 @@
-h1 Books
+extends ../layouts/common
+block content
+  h1 Books
 
-a(href="/books/create") Create new book
+  a(href="/books/create") Create new book
 
-ul
-  each book in books
-   span=book.title
-   span &nbsp;
-   a(href="/books/"+book.id) View
-   br
+  ul
+    each book in books
+    span=book.title
+    span &nbsp;
+    a(href="/books/"+book.id) View
+    br
