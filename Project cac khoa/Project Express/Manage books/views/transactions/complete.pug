@@ -1,0 +1,9 @@
+h1 Status transaction
+span=transaction.isCompleted
+
+form(action="/transactions/"+transaction.id+"/complete", method="POST")
+    label Change status
+    select(name="isCompleted")
+      option(value=transaction.isCompleted)=transaction.isCompleted
+      option(value=transaction.isCompleted)=!transaction.isCompleted
+    button Confirm

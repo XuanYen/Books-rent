@@ -1,34 +1,15 @@
 var express = require('express');
-var shortid=require('shortid');
-var router = express.Router()
-var db=require('../db');
+var router = express.Router();
+var controller=require('../controllers/book.controller');
 
-router.get('/',(req,res)=>res.render('books/index',{
-    books: db.get('books').value()
-}));
+router.get('/',controller.index);
 
 
-router.get('/create',(req,res)=>res.render('books/create'))
-router.post('/create',(req,res)=>{
-  req.body.id=shortid.generate();
-  db.get('books').push(req.body).write()
-  res.redirect('/books');
-})
+router.get('/create',controller.create);
+router.post('/create',controller.postCreate);
 
-router.get('/:id',(req,res)=>{
-  var id= req.params.id;
-  var book=db.get('books').find({id: id}).value();
-  res.render('books/view',{book: book})
-})
-router.get('/:id/delete',(req,res)=>{
-  var id= req.params.id;
-  db.get('books').remove({ id: id }).write()
-  res.redirect('/books');
-});
+router.get('/:id',controller.getBook);
+router.get('/:id/delete',controller.delete);
 
-router.post('/:id/update',(req,res)=>{
-  let idBook=req.params.id;
-  db.get('books').find({id: idBook}).assign({title: req.body.title}).write()
-  res.redirect('/books');
-})
+router.post('/:id/update',controller.update);
 module.exports = router
