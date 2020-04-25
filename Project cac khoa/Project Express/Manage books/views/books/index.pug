@@ -1,0 +1,10 @@
+h1 Books
+
+a(href="/books/create") Create new book
+
+ul
+  each book in books
+   span=book.title
+   span &nbsp;
+   a(href="/books/"+book.id) View
+   br
