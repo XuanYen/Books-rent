@@ -5,21 +5,11 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
-
-
-
-var shortid=require('shortid');
-
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json')
-const db = low(adapter)
-
-db.defaults({ books: [], users: []})
-  .write()
-//Set cac gia tri default  
 const bodyParser = require('body-parser');
 const port=3000;
+
+var bookRoute=require("./routes/book.route")
+var userRoute=require("./routes/user.route")
 
 app.set('view engine', 'pug');
 app.set('views','./views'); 
@@ -31,67 +21,10 @@ app.get('/',(req, res)=>res.render('index',{
     name: 'Hello books'
 }));
 
+app.use('/books', bookRoute);
+app.use('/users', userRoute);
 
 
-app.get('/books',(req,res)=>res.render('books/index',{
-    books: db.get('books').value()
-}));
-
-
-app.get('/books/create',(req,res)=>res.render('books/create'))
-app.post('/books/create',(req,res)=>{
-  req.body.id=shortid.generate();
-  db.get('books').push(req.body).write()
-  res.redirect('/books');
-})
-
-app.get('/books/:id',(req,res)=>{
-  var id= req.params.id;
-  var book=db.get('books').find({id: id}).value();
-  res.render('books/view',{book: book})
-})
-app.get('/books/:id/delete',(req,res)=>{
-  var id= req.params.id;
-  db.get('books').remove({ id: id }).write()
-  res.redirect('/books');
-});
-
-app.post('/books/:id/update',(req,res)=>{
-  let idBook=req.params.id;
-  db.get('books').find({id: idBook}).assign({title: req.body.title}).write()
-  res.redirect('/books');
-})
-app.get('/users',(req,res)=>res.render('users/index',{
-  users: db.get('users').value()
-}));
-
-app.get('/users/create',(req,res)=>res.render('users/create'))
-app.post('/users/create',(req,res)=>{
-  req.body.id=shortid.generate();
-  db.get('users').push(req.body).write()
-  res.redirect('/users');
-})
-app.get('/users/:id',(req,res)=>{
-  var id=req.params.id;
-  var user=db.get('users').find({id: id}).value();
-  res.render('users/view',{user: user})
-})
-app.get('/users/:id/delete',(req,res)=>{
-  var id= req.params.id;
-  db.get('users').remove({ id: id }).write()
-  res.redirect('/users');
-});
-app.get('/users/:id/update',(req,res)=>{
-  var id=req.params.id;
-  var user=db.get('users').find({id: id}).value()
-  console.log(user);
-  res.render('users/update',{user: user})
-})
-app.post('/users/:id/update',(req,res)=>{
-  let idUser=req.params.id;
-  db.get('users').find({id: idUser}).assign({name: req.body.name, age: req.body.age}).write()
-  res.redirect('/users');
-})
 // listen for requests :)
 const listener = app.listen(port, () => {
   console.log("Your app is listening on port " + port);
