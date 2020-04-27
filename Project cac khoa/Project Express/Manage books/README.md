@@ -1,7 +1,7 @@
 # Project manage books v1.4
 ## What to do
-- Them template layout
-- Validate user input
+-Chuyển phần validation qua dạng middleware
+
 
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
@@ -23,7 +23,8 @@ Bạn chợt nhận ra khi một người trả sách cho mình, mình không bi
 9) Thêm một link Hoàn thành ở mỗi transaction ở màn hình /transactions
 10) Link này trỏ tới /transactions/<id>/complete trong đó <id> đại diện cho ID của transaction ở dòng đó
 11) Bạn tự hiểu logic phải làm gì rồi đúng không?
-
+12) Them template layout
+13) Validate user input
 
 # hello-express
 
