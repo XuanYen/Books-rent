@@ -28,8 +28,18 @@ module.exports.postCreate=(req,res)=>{
     res.redirect('/transactions');
 };
 module.exports.complete=(req,res)=>{
+    var errors=[]; 
     var id=req.params.id;
     var transaction=db.get('transactions').find({id: id}).value()
+    if(!transaction){
+       errors.push('Id failed. Transaction is not exist');
+    }
+    if(errors.length){
+        res.render('transactions/complete',{
+            errors: errors
+        })
+        return;
+    }
     res.render('transactions/complete',{transaction: transaction})
 };
 module.exports.postComplete=(req,res)=>{

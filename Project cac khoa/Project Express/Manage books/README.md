@@ -1,11 +1,7 @@
-# Project manage books v1.3
+# Project manage books v1.4
 ## What to do
-
-Bạn chợt nhận ra khi một người trả sách cho mình, mình không biết làm sao để đánh dấu là transaction đã được hoàn thành. Bạn bèn nghĩ ra việc thêm 1 field mới cho mỗi transaction là isComplete (boolean) nếu nó là true thì có nghĩa là transaction đã hoàn thành, sách đã được trả.
-1) Thêm một link Hoàn thành ở mỗi transaction ở màn hình /transactions
-2) Link này trỏ tới /transactions/<id>/complete trong đó <id> đại diện cho ID của transaction ở dòng đó
-3) Bạn tự hiểu logic phải làm gì rồi đúng không?
-
+- Them template layout
+- Validate user input
 
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
@@ -23,7 +19,10 @@ Bạn chợt nhận ra là giả sử bây giờ có một người đến thuê
 6) Thêm route /transactions hiển thị các transactions đã tạo. 
 7) Thêm trạng /transactions/create chứa form gồm 2 field là 2 dropdown (sử dụng select và option để giải quyết). Một dropdown dành cho các user, 1 dropdown dành cho việc chọn sách. Đừng quên nút Create để tạo mới.
 8) Action của form trên có thể để /transactions/create (hoặc để trống sẽ tự hiểu là POST lên URL hiện tại) và method là POST (of course)
-
+Bạn chợt nhận ra khi một người trả sách cho mình, mình không biết làm sao để đánh dấu là transaction đã được hoàn thành. Bạn bèn nghĩ ra việc thêm 1 field mới cho mỗi transaction là isComplete (boolean) nếu nó là true thì có nghĩa là transaction đã hoàn thành, sách đã được trả.
+9) Thêm một link Hoàn thành ở mỗi transaction ở màn hình /transactions
+10) Link này trỏ tới /transactions/<id>/complete trong đó <id> đại diện cho ID của transaction ở dòng đó
+11) Bạn tự hiểu logic phải làm gì rồi đúng không?
 
 
 # hello-express

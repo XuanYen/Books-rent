@@ -7,6 +7,17 @@ module.exports.index=(req,res)=>res.render('users/index',{
 module.exports.create=(req,res)=>res.render('users/create');
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortid.generate();
+    var errors=[];
+    if(req.body.name.split("").length>=30){
+      errors.push("Username must less 30 characters")
+    }
+    if(errors.length){
+        res.render('users/create',{
+            errors: errors,
+            values: req.body
+        })
+        return;
+    }
     db.get('users').push(req.body).write()
     res.redirect('/users');
 };
