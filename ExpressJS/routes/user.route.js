@@ -9,7 +9,7 @@ router.get('/create',controller.create);
 
 router.get('/:id',controller.get);
 
-router.post('/creante',controller.postCreate);
+router.post('/create',controller.postCreate);
 
 
 module.exports = router
