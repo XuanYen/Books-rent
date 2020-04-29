@@ -1,9 +1,13 @@
 h1 Users
-//- form khong thi no se gui trang hien tai nên phai them action
-//- Khi go trong input gi thi se gan vao q
+
+a(href="/users/create") New
+
 form(action="/users/search", method="GET")
     input(type="text", name="q")
     button Search
 ul 
     each user in users
-     li=user.name
+     li
+        span=user.name
+        span &nbsp; 
+        a(href="/users/"+user.id) View
