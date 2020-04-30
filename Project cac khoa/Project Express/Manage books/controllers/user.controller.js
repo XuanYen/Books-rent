@@ -7,6 +7,7 @@ module.exports.index=(req,res)=>res.render('users/index',{
 module.exports.create=(req,res)=>res.render('users/create');
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortid.generate();
+    req.body.isAdmin = false;  
     var errors=[];
     if(req.body.name.split("").length>=30){
       errors.push("Username must less 30 characters")
@@ -39,6 +40,6 @@ module.exports.update=(req,res)=>{
 };
 module.exports.postUpdate=(req,res)=>{
     let idUser=req.params.id;
-    db.get('users').find({id: idUser}).assign({name: req.body.name, age: req.body.age}).write()
+    db.get('users').find({id: idUser}).assign({name: req.body.name, phone: req.body.phone}).write()
     res.redirect('/users');
 };

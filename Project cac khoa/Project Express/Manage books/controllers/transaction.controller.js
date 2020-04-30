@@ -47,3 +47,4 @@ module.exports.postComplete=(req,res)=>{
     db.get('transactions').find({id: id}).assign({isCompleted: req.body.isCompleted}).write()
     res.redirect('/transactions')
 };
+module.exports.menu=(res,req)=>res.render("transactions/menu")

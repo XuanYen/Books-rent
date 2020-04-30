@@ -13,6 +13,9 @@ block content
     .form-group
       label Age
       br
-      input.form-control(name="age", type="text", value=values? values.age:"")
+      input.form-control(name="phone", type="text", value=values? values.phone:"")
+    .form-group
+            label(for="email") Email
+            input.email.form-control(type="email" name="email" value= values ? values.email : "")
 
     button.btn.btn-primary Create

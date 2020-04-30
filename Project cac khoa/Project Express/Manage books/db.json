@@ -28,24 +28,36 @@
   ],
   "users": [
     {
+      "name": "Duong",
+      "phone": "078555555",
+      "id": "DUk19liYX",
+      "email": "thanhduon@gmail.com",
+      "password": "123123",
+      "isAdmin": true
+    },
+    {
       "name": "Lan",
-      "age": "20",
-      "id": "4FuEUVDqa"
+      "phone": "0344444455",
+      "id": "4FuEUVDqa",
+      "email": "xy@gmail.com",
+      "password": "123123",
+      "isAdmin": false
     },
     {
       "name": "Mai",
-      "age": "19",
-      "id": "kgiHxW-Hi"
+      "phone": "05551212",
+      "id": "kgiHxW-Hi",
+      "email": "ttd@gmail.com",
+      "password": "123123",
+      "isAdmin": false
     },
     {
       "name": "Dung",
-      "age": "50",
-      "id": "cI_EEgwsC"
-    },
-    {
-      "name": "Duong",
-      "age": "21",
-      "id": "DUk19liYX"
+      "phone": "02555555",
+      "id": "cI_EEgwsC",
+      "email": "smile@gmail.com",
+      "password": "123123",
+      "isAdmin": false
     }
   ],
   "transactions": [
@@ -59,7 +71,7 @@
       "userId": "DUk19liYX",
       "bookId": "bwt7DfAIO",
       "id": "54gRhyEYj",
-      "isCompleted": false
+      "isCompleted": "true"
     },
     {
       "userId": "cI_EEgwsC",
@@ -67,5 +79,6 @@
       "id": "rjhm-a-AP",
       "isCompleted": false
     }
-  ]
+  ],
+  "count": 8
 }

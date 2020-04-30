@@ -1,14 +1,13 @@
 extends ../layouts/common
 block content
-    span Name:
-        span= user.name
-    br
-    span Age:
-        span=user.age
-    br
-    button
-        a(href="/users/"+user.id+"/delete", style="color:black") Delete
-    button
-        a(href="/users/"+user.id+"/update", style="color:black") Update
+  span Name:
+      span= user.name
+  br
+  span Phone:
+      span=user.phone
+  br
+  button
+      a(href="/users/"+user.id+"/delete", style="color:black") Delete
+  button
+      a(href="/users/"+user.id+"/update", style="color:black") Update
 
-    

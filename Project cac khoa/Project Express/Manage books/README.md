@@ -1,8 +1,12 @@
-# Project manage books v1.4
+# Project manage books v1.5
 ## What to do
--Chuyển phần validation qua dạng middleware
+Một ngày, bạn gái bạn qua nhà chơi và nhận thấy hệ thống bạn đang làm thật là awesome, cô ấy khuyên bạn nên làm chứng năng đăng nhập để những người thuê sách có thể quản lý được những cuốn sách mà họ thuê của bạn.
+1) Áp dụng kiến thức đã học làm chức năng đăng nhập
+2) Tạo thêm 1 field password cho mỗi user và đặt giá trị string "123123" cho tất cả user để tăng tính bảo mật (bạn đã từng nghe: nơi nguy hiểm nhất là nơi an toàn nhất? Biết đâu các hacker chỉ dò các password có độ dài 8 ký tự trở lên? App của bạn là một trường hợp ngoại lệ)
+3) Thêm trường email cho mỗi người dùng, đảm bảo tính unique (đây là thời điểm để bạn sáng tạo)
+4) Làm sao để mỗi người đăng nhập vào hệ thống thì nhìn thấy menu Transactions ngoại trừ account của bạn, và trong đó chỉ chứa các transaction liên quan tới user đang đăng nhập
 
-
+Gợi ý: Bạn nên thêm 1 field isAdmin: true cho tài khoản của bạn. Bài này bạn sẽ phải nghĩ nhiều hơn các bài khác một chút. Hãy dành 1 ngày ra làm trước khi bạn hỏi trợ giúp.
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -25,7 +29,7 @@ Bạn chợt nhận ra khi một người trả sách cho mình, mình không bi
 11) Bạn tự hiểu logic phải làm gì rồi đúng không?
 12) Them template layout
 13) Validate user input
-
+14) Chuyen validate sang middleware
 # hello-express
 
 A server that serves a webpage, its resources, and some data
