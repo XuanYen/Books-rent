@@ -1,13 +1,17 @@
 var db=require('../db');
 var shortid=require('shortid');
-
+const bcrypt = require('bcrypt');
 module.exports.index=(req,res)=>res.render('users/index',{
     users: db.get('users').value()
 });
 module.exports.create=(req,res)=>res.render('users/create');
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortid.generate();
-    req.body.isAdmin = false;  
+    req.body.isAdmin = false;
+    req.body.wrongLoginCount=0; 
+    var salt = bcrypt.genSaltSync(10)
+    var hash = bcrypt.hashSync(req.body.password, salt)
+    req.body.password=hash;
     var errors=[];
     if(req.body.name.split("").length>=30){
       errors.push("Username must less 30 characters")
@@ -35,7 +39,6 @@ module.exports.delete=(req,res)=>{
 module.exports.update=(req,res)=>{
     var id=req.params.id;
     var user=db.get('users').find({id: id}).value()
-    console.log(user);
     res.render('users/update',{user: user})
 };
 module.exports.postUpdate=(req,res)=>{

@@ -1,35 +1,41 @@
-# Project manage books v1.5
+# Project manage books v1.6
 ## What to do
-Một ngày, bạn gái bạn qua nhà chơi và nhận thấy hệ thống bạn đang làm thật là awesome, cô ấy khuyên bạn nên làm chứng năng đăng nhập để những người thuê sách có thể quản lý được những cuốn sách mà họ thuê của bạn.
-1) Áp dụng kiến thức đã học làm chức năng đăng nhập
-2) Tạo thêm 1 field password cho mỗi user và đặt giá trị string "123123" cho tất cả user để tăng tính bảo mật (bạn đã từng nghe: nơi nguy hiểm nhất là nơi an toàn nhất? Biết đâu các hacker chỉ dò các password có độ dài 8 ký tự trở lên? App của bạn là một trường hợp ngoại lệ)
-3) Thêm trường email cho mỗi người dùng, đảm bảo tính unique (đây là thời điểm để bạn sáng tạo)
-4) Làm sao để mỗi người đăng nhập vào hệ thống thì nhìn thấy menu Transactions ngoại trừ account của bạn, và trong đó chỉ chứa các transaction liên quan tới user đang đăng nhập
-
-Gợi ý: Bạn nên thêm 1 field isAdmin: true cho tài khoản của bạn. Bài này bạn sẽ phải nghĩ nhiều hơn các bài khác một chút. Hãy dành 1 ngày ra làm trước khi bạn hỏi trợ giúp.
+Người tính không bằng trời tính. Bạn gái của bạn thông minh hơn bạn tưởng. Cô ấy không thèm hack db của bạn, mà cô ấy sử dụng brute-force để dò ra mật khẩu của bạn (sau khi đã dòm được email đăng nhập của bạn).
+Bạn nhận ra rằng, thuật toán của md5 khá là cùi bắp vì nó chạy nhanh -> chỉ cần ít phút để có thể brute-force ra kết quả.
+Một lý do nữa là bạn quên implement rate limiter để tránh bị brute-force nữa.
+1) Sử dụng bcrypt để hash password của người dùng (google trước đã nhé)
+2) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
-
 - Hiển thị toàn bộ sách đang có (danh sách các title)
 - Thêm sách (chỉ cần field title - tiêu đề sách, description - mô tả sách)
 - Update tiêu đề sách
 - Xoá sách
-Chú ý: Sử dụng lowdb
+  Chú ý: Sử dụng lowdb
 3) Tưởng tượng bạn có quá nhiều sách đến nỗi bạn muốn cho người khác thuê. Bây giờ bạn cần: Thêm chức năng CRUD users (thêm bớt sửa xoá), users ở đây là những người thuê sách
 4) Sử dụng route /users
-Bạn chợt nhận ra là giả sử bây giờ có một người đến thuê, làm thế nào để biết ai đang thuê cuốn nào? Bạn cần phải có thêm 1 collection chứa các transaction của việc thuê sách. Mỗi object trong collection này sẽ chứa: userId, bookId, tất nhiên chúng sẽ có 1 property id riêng của mình.
+  Bạn chợt nhận ra là giả sử bây giờ có một người đến thuê, làm thế nào để biết ai đang thuê cuốn nào? Bạn cần phải có thêm 1 collection chứa các transaction của việc thuê sách. Mỗi object trong collection này sẽ chứa: userId, bookId, tất nhiên chúng sẽ có 1 property id riêng của mình.
 5) Update lại file db json của bạn
 6) Thêm route /transactions hiển thị các transactions đã tạo. 
 7) Thêm trạng /transactions/create chứa form gồm 2 field là 2 dropdown (sử dụng select và option để giải quyết). Một dropdown dành cho các user, 1 dropdown dành cho việc chọn sách. Đừng quên nút Create để tạo mới.
 8) Action của form trên có thể để /transactions/create (hoặc để trống sẽ tự hiểu là POST lên URL hiện tại) và method là POST (of course)
-Bạn chợt nhận ra khi một người trả sách cho mình, mình không biết làm sao để đánh dấu là transaction đã được hoàn thành. Bạn bèn nghĩ ra việc thêm 1 field mới cho mỗi transaction là isComplete (boolean) nếu nó là true thì có nghĩa là transaction đã hoàn thành, sách đã được trả.
+  Bạn chợt nhận ra khi một người trả sách cho mình, mình không biết làm sao để đánh dấu là transaction đã được hoàn thành. Bạn bèn nghĩ ra việc thêm 1 field mới cho mỗi transaction là isComplete (boolean) nếu nó là true thì có nghĩa là transaction đã hoàn thành, sách đã được trả.
 9) Thêm một link Hoàn thành ở mỗi transaction ở màn hình /transactions
 10) Link này trỏ tới /transactions/<id>/complete trong đó <id> đại diện cho ID của transaction ở dòng đó
 11) Bạn tự hiểu logic phải làm gì rồi đúng không?
 12) Them template layout
 13) Validate user input
 14) Chuyen validate sang middleware
+  Một ngày, bạn gái bạn qua nhà chơi và nhận thấy hệ thống bạn đang làm thật là awesome, cô ấy khuyên bạn nên làm chứng năng đăng nhập để những người thuê sách có thể quản lý được những cuốn sách mà họ thuê của bạn.
+15) Áp dụng kiến thức đã học làm chức năng đăng nhập
+16) Tạo thêm 1 field password cho mỗi user và đặt giá trị string "123123" cho tất cả user để tăng tính bảo mật (bạn đã từng nghe: nơi nguy hiểm nhất là nơi an toàn nhất? Biết đâu các hacker chỉ dò các password có độ dài 8 ký tự trở lên? App của bạn là một trường hợp ngoại lệ)
+17) Thêm trường email cho mỗi người dùng, đảm bảo tính unique (đây là thời điểm để bạn sáng tạo)
+18) Làm sao để mỗi người đăng nhập vào hệ thống thì nhìn thấy menu Transactions ngoại trừ account của bạn, và trong đó chỉ chứa các transaction liên quan tới user đang đăng nhập
+Gợi ý: Bạn nên thêm 1 field isAdmin: true cho tài khoản của bạn. Bài này bạn sẽ phải nghĩ nhiều hơn các bài khác một chút. Hãy dành 1 ngày ra làm trước khi bạn hỏi trợ giúp.
+19) Vào một ngày mưa gió bão bùng, chớp giật ngoài hiên, bạn gái của bạn qua nhà chơi và hack vào hệ thống của bạn vì cô ấy nhìn lén được mật khẩu của người dùng. Bạn quyết định mã hoá chúng để cho dù cô ấy có lấy được database cũng không thể dò được mật khẩu là bao nhiêu.
+Dùng md5
+
 # hello-express
 
 A server that serves a webpage, its resources, and some data
