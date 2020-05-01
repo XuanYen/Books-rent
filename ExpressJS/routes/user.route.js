@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router()
 var validate=require('../validate/user.validate');
 var controller=require('../controllers/user.controller')
-router.get('/',controller.index);
+var authMiddleware=require('../middleware/auth.middleware');
+
+router.get('/',authMiddleware.requireAuth,controller.index);
 
 route.get('/cookie',(res,req,next)=>{
     res.cookie('user-id',12345);
