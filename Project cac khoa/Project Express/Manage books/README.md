@@ -1,10 +1,6 @@
-# Project manage books v1.6
+# Project manage books v1.7
 ## What to do
-Người tính không bằng trời tính. Bạn gái của bạn thông minh hơn bạn tưởng. Cô ấy không thèm hack db của bạn, mà cô ấy sử dụng brute-force để dò ra mật khẩu của bạn (sau khi đã dòm được email đăng nhập của bạn).
-Bạn nhận ra rằng, thuật toán của md5 khá là cùi bắp vì nó chạy nhanh -> chỉ cần ít phút để có thể brute-force ra kết quả.
-Một lý do nữa là bạn quên implement rate limiter để tránh bị brute-force nữa.
-1) Sử dụng bcrypt để hash password của người dùng (google trước đã nhé)
-2) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
+- Thực hiện sign cho cookie
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -35,6 +31,11 @@ Một lý do nữa là bạn quên implement rate limiter để tránh bị brut
 Gợi ý: Bạn nên thêm 1 field isAdmin: true cho tài khoản của bạn. Bài này bạn sẽ phải nghĩ nhiều hơn các bài khác một chút. Hãy dành 1 ngày ra làm trước khi bạn hỏi trợ giúp.
 19) Vào một ngày mưa gió bão bùng, chớp giật ngoài hiên, bạn gái của bạn qua nhà chơi và hack vào hệ thống của bạn vì cô ấy nhìn lén được mật khẩu của người dùng. Bạn quyết định mã hoá chúng để cho dù cô ấy có lấy được database cũng không thể dò được mật khẩu là bao nhiêu.
 Dùng md5
+Người tính không bằng trời tính. Bạn gái của bạn thông minh hơn bạn tưởng. Cô ấy không thèm hack db của bạn, mà cô ấy sử dụng brute-force để dò ra mật khẩu của bạn (sau khi đã dòm được email đăng nhập của bạn).
+Bạn nhận ra rằng, thuật toán của md5 khá là cùi bắp vì nó chạy nhanh -> chỉ cần ít phút để có thể brute-force ra kết quả.
+Một lý do nữa là bạn quên implement rate limiter để tránh bị brute-force nữa.
+20) Sử dụng bcrypt để hash password của người dùng (google trước đã nhé)
+21) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
 
 # hello-express
 

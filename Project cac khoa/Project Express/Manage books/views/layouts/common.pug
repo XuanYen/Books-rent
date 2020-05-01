@@ -21,6 +21,8 @@ html
                         li.nav-item
                             a.nav-link(href='/transactions') Transactions
                         li.nav-item
-                            a.nav-link(href='/transaction/menu') Transaction Menu       
+                            a.nav-link(href='/transaction/menu') Transaction Menu      
+                if user
+                  p= user.name 
         .container.pt-5
             block content

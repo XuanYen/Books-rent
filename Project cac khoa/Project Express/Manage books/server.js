@@ -17,7 +17,7 @@ var authMiddleware=require("./middleware/auth.middleware");
 var adminMiddleware=require('./middleware/admin.middleware');
 var cookieParser = require('cookie-parser')
 
-app.use(cookieParser())
+app.use(cookieParser('hkhaasdsdfmeeeeeeemsd'))
 app.set('view engine', 'pug');
 app.set('views','./views'); 
 app.use(bodyParser.json()) // for parsing application/json

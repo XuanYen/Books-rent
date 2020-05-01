@@ -33,7 +33,7 @@
       "id": "DUk19liYX",
       "email": "thanhduon@gmail.com",
       "password": "123123",
-      "wrongLoginCount": 5,
+      "wrongLoginCount": 1,
       "isAdmin": true
     },
     {
