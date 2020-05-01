@@ -17,3 +17,4 @@
 ## Bai15. Authentication
 ## Bai16. md5
 ## Bai17. Signed cookie
+## Bai18. Environment Variables

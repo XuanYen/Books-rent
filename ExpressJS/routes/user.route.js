@@ -6,7 +6,7 @@ var authMiddleware=require('../middleware/auth.middleware');
 
 router.get('/',authMiddleware.requireAuth,controller.index);
 
-route.get('/cookie',(res,req,next)=>{
+router.get('/cookie',(res,req,next)=>{
     res.cookie('user-id',12345);
     res.send('Hello');
 })
