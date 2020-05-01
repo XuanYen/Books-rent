@@ -12,3 +12,4 @@
 ## Bai10. Template layout (boostrap)
 ## Bai11. Static file
 ## Bai12. Server-side validation
+## Bai13. Middleware

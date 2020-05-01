@@ -15,4 +15,5 @@ app.get('/',(req, res)=>res.render('index',{
 }));
 
 app.use('/users', userRoute);
+
 app.listen(port,()=>console.log('server listening on port'+port));
