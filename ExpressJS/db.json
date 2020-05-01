@@ -29,6 +29,13 @@
       "name": "Minh Minh",
       "phone": "02222334554",
       "id": "iD8aWbWvF"
+    },
+    {
+      "name": "XuanYen",
+      "phone": "0755555",
+      "id": "iD8aWbWvF",
+      "email": "xuanyen@gmail.com",
+      "password": "cnxy"
     }
   ]
 }
