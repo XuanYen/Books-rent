@@ -1,6 +1,7 @@
 # Project manage books v1.7
 ## What to do
-- Thực hiện sign cho cookie
+Bạn nhận thấy app của mình không thể kiếm được tiền cho không có một tính năng gì đặc biệt. Tất cả những tính năng bạn đang làm bất cứ beginner nào cũng có thể làm được. Bạn ngồi vò đầu bứt tai suốt 1 tuần liền thì tự dưng bạn nghĩ ra: Nếu ta gửi mail cho người dùng khi tài khoản của họ bị login sai 3 lần liên tiếp thì họ sẽ vui sướng tới mức móc tiền ra trả để được sử dụng dịch vụ vì hệ thống của bạn bảo mật quá tốt.
+Đăng ký sử dụng một email API : nodemailer
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -36,7 +37,7 @@ Bạn nhận ra rằng, thuật toán của md5 khá là cùi bắp vì nó ch�
 Một lý do nữa là bạn quên implement rate limiter để tránh bị brute-force nữa.
 20) Sử dụng bcrypt để hash password của người dùng (google trước đã nhé)
 21) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
-
+22) Thực hiện sign cho cookie
 # hello-express
 
 A server that serves a webpage, its resources, and some data

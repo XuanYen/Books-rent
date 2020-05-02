@@ -1,3 +1,4 @@
+const sendEmail = require("../utils/sendEmail");
 var db=require('../db');
 const bcrypt = require('bcrypt')
 module.exports.login=(req,res)=>res.render('auth/login');
@@ -7,7 +8,6 @@ module.exports.postLogin=(req,res)=>{
     var salt = bcrypt.genSaltSync(10)
     var hash = bcrypt.hashSync(password, salt)
     var user=db.get("users").find({email: email}).value();
-    var wrongLoginCount=user.wrongLoginCount;
     if(!user){
         res.render('auth/login',{
             errors:[
@@ -17,25 +17,26 @@ module.exports.postLogin=(req,res)=>{
         });
         return;
     }
+    var wrongLoginCount=user.wrongLoginCount;
+    if(wrongLoginCount>4){
+      sendEmail(user.email);
+        res.render('auth/login',{
+            errors: [
+                'Locked account for wrong login over 4 times'
+            ]
+            });
+        return;
+    }
     var temp=bcrypt.compareSync(user.password, hash);
     if(!temp){
         wrongLoginCount=wrongLoginCount+1;
         db.get("users").find({email: email}).assign({wrongLoginCount: wrongLoginCount}).write();
-        if(wrongLoginCount<=4){
             res.render('auth/login',{
                 errors: [
                     'Wrong password'
                 ],
                 values: req.body
                 });
-        }
-    }
-    if(wrongLoginCount>4){
-        res.render('auth/login',{
-            errors: [
-                'Failed login. Your account is blocked'
-            ]
-            });
         return;
     }
     res.cookie('userId', user.id,{
