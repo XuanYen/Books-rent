@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const port=3000;
-
+require('dotenv').config()
 var bookRoute=require("./routes/book.route");
 var userRoute=require("./routes/user.route");
 var transactionRoute=require("./routes/transaction.route")
@@ -17,7 +17,7 @@ var authMiddleware=require("./middleware/auth.middleware");
 var adminMiddleware=require('./middleware/admin.middleware');
 var cookieParser = require('cookie-parser')
 
-app.use(cookieParser('hkhaasdsdfmeeeeeeemsd'))
+app.use(cookieParser(process.env.SESSION_SECRET))
 app.set('view engine', 'pug');
 app.set('views','./views'); 
 app.use(bodyParser.json()) // for parsing application/json
@@ -28,10 +28,10 @@ app.get('/',(req, res)=>res.render('index',{
     name: 'Hello books'
 }));
 
+app.use('/auth', authRoute);
 app.use('/books',authMiddleware.requireAuth,adminMiddleware.requireAdmin(true), bookRoute);
 app.use('/users',authMiddleware.requireAuth,adminMiddleware.requireAdmin(true), userRoute);
 app.use('/transactions',authMiddleware.requireAuth,adminMiddleware.requireAdmin(true),transactionRoute);
-app.use('/auth', authRoute);
 app.use('/transaction', authMiddleware.requireAuth, adminMiddleware.requireAdmin(false), menuRoute)
 // listen for requests :)
 const listener = app.listen(3000, () => {

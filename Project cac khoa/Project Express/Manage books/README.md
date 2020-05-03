@@ -1,7 +1,8 @@
 # Project manage books v1.7
 ## What to do
-Bạn nhận thấy app của mình không thể kiếm được tiền cho không có một tính năng gì đặc biệt. Tất cả những tính năng bạn đang làm bất cứ beginner nào cũng có thể làm được. Bạn ngồi vò đầu bứt tai suốt 1 tuần liền thì tự dưng bạn nghĩ ra: Nếu ta gửi mail cho người dùng khi tài khoản của họ bị login sai 3 lần liên tiếp thì họ sẽ vui sướng tới mức móc tiền ra trả để được sử dụng dịch vụ vì hệ thống của bạn bảo mật quá tốt.
-Đăng ký sử dụng một email API : nodemailer
+Bỗng dưng app của bạn được nhiều người dùng, tiếng lành đồn xa tới tai một nhà báo lá cải nghiệp dư tên Thông, anh ta quyết định tới gặp bạn để viết bài đăng lên blog của anh.
+Sau một ngày, lượng người đến nhà bạn thuê sách quá nhiều, dẫn đến trang web của bạn bị giật lag do danh sách user và transaction quá dài.
+Bạn quyết định implement chức năng pagination để giảm tải cho cả server lẫn trình duyệt.
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -38,6 +39,9 @@ Một lý do nữa là bạn quên implement rate limiter để tránh bị brut
 20) Sử dụng bcrypt để hash password của người dùng (google trước đã nhé)
 21) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
 22) Thực hiện sign cho cookie
+Bạn nhận thấy app của mình không thể kiếm được tiền cho không có một tính năng gì đặc biệt. Tất cả những tính năng bạn đang làm bất cứ beginner nào cũng có thể làm được. Bạn ngồi vò đầu bứt tai suốt 1 tuần liền thì tự dưng bạn nghĩ ra: Nếu ta gửi mail cho người dùng khi tài khoản của họ bị login sai 3 lần liên tiếp thì họ sẽ vui sướng tới mức móc tiền ra trả để được sử dụng dịch vụ vì hệ thống của bạn bảo mật quá tốt.
+23)Đăng ký sử dụng một email API : nodemailer
+
 # hello-express
 
 A server that serves a webpage, its resources, and some data

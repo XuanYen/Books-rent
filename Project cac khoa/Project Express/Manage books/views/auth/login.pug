@@ -8,9 +8,9 @@ block content
     form(action="/auth/login", method="POST")
         .form-group
             label(for="email") Email
-            input#email.form-control(name="email", type="text", value=values? values.email:"")
+            input#email.form-control(name="email", type="text", value=values? values.email:"",style="width: 300px")
 
         .form-group
             label(for="password") Password
-            input#password.form-control(name="password", type="text", value=values? values.password:"")
+            input#password.form-control(name="password", type="text", value=values? values.password:"",style="width: 300px")
         button.btn.btn-primary Login

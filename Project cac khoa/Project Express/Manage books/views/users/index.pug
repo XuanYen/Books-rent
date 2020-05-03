@@ -1,11 +1,14 @@
 extends ../layouts/common
 block content
   h1 List users
-  a(href="/users/create") Create new user
-  ul
-    each user in users
-     li
-      span=user.name
-      span &nbsp;
-      a(href="/users/"+user.id) View
-    br
+  a.btn.btn-primary(href="/users/create") Create new user
+  table.table
+        tr
+            th Name
+            th Action
+        each user in users
+          tr
+            td= user.name
+            td
+              a.btn.btn-light(href="/users/"+user.id) View
+              

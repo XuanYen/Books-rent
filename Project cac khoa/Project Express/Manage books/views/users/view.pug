@@ -6,8 +6,6 @@ block content
   span Phone:
       span=user.phone
   br
-  button
-      a(href="/users/"+user.id+"/delete", style="color:black") Delete
-  button
-      a(href="/users/"+user.id+"/update", style="color:black") Update
+  a.btn.btn-light(href="/users/"+user.id+"/delete", style="color:black") Delete
+  a.btn.btn-light(href="/users/"+user.id+"/update", style="color:black") Update
 

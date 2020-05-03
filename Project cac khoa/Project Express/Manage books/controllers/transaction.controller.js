@@ -2,18 +2,27 @@ var db=require('../db');
 var shortid=require('shortid');
 
 module.exports.index=(req,res)=>{
+    var page=parseInt(req.query.page) || 1 //n
+    var perPage=8; //x
+    var start=(page-1)*perPage;
+    var end=page*perPage;
     var books=db.get('books').value();
     var users=db.get('users').value();
     var transactions=db.get('transactions').value();
+    var pages=[];
+    for(var i=1;i<=(transactions.length)/perPage+1;i++){
+      pages.push(i);
+    }
     var changetrans=transactions.map(trans=>{
-      var book=books.find(ele=>ele.id==trans.bookId);
-      var user=users.find(ele=>ele.id==trans.userId);
-      return {id: trans.id,bookTitle: book.title, userName: user.name, isCompleted: trans.isCompleted}
-    });
+      var user=db.get('users').find({id: trans.userId}).value();
+      var book=db.get('books').find({id: trans.bookId}).value();
+      return {id: trans.id, bookTitle: book.title,userName: user.name, isCompleted: trans.isCompleted}
+    }).slice(start,end);
     res.render("transactions/index",{
       transactions: changetrans,
       books,
-      users
+      users,
+      pages
     })
 };
 module.exports.create=(req,res)=>{
