@@ -35,6 +35,6 @@ app.use('/transactions',authMiddleware.requireAuth,adminMiddleware.requireAdmin(
 app.use('/transaction', authMiddleware.requireAuth, adminMiddleware.requireAdmin(false), menuRoute)
 // listen for requests :)
 const listener = app.listen(3000, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("Your app is listening on port " + 3000);
 });
 

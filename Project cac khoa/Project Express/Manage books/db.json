@@ -43,13 +43,14 @@
   ],
   "users": [
     {
-      "name": "Duong",
-      "phone": "078555555",
+      "name": "ThanhDuong",
+      "phone": "014542312",
       "id": "DUk19liYX",
       "email": "thanhduon@gmail.com",
       "password": "123123",
       "wrongLoginCount": 1,
-      "isAdmin": true
+      "isAdmin": true,
+      "avatarUrl": "http://res.cloudinary.com/xuanyenhcmut/image/upload/v1588689540/uiaxjl3kiivjkmh2ohxk.png"
     },
     {
       "name": "Lyly",
@@ -66,7 +67,7 @@
       "email": "lyna@gmail.com",
       "password": "$2b$10$mYBwFbwBW7eTjdKXuvVYBOgA8U5sS6nrVEY7vhDKEenCvBHOPdPpy",
       "id": "8r0wv3lUD",
-      "wrongLoginCount": 0,
+      "wrongLoginCount": 2,
       "isAdmin": false
     },
     {
@@ -94,7 +95,7 @@
       "password": "$2b$10$j2nVkRA5QseI/.ATpr8cp.cc48/Y6gO3WTCiECDdUHun9LEX0S3pm",
       "id": "Tdp8dOuQw",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 2
     }
   ],
   "transactions": [

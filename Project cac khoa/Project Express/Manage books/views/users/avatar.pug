@@ -1,0 +1,11 @@
+extends ../layouts/common
+block content
+  h1 Update Avatar
+    img(src=user.avatarUrl)
+    form(action="/users/profile/avatar", method="POST",enctype="multipart/form-data")
+        .form-group
+            label(for="avatar") Update Avatar
+            input#avatar.form-control(name="avatar", type="file",style="width: 300px",placeholder)
+            button.btn.btn-primary(type="submit") Submit
+
+        

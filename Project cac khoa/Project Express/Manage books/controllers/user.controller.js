@@ -1,9 +1,18 @@
 var db=require('../db');
 var shortid=require('shortid');
-const bcrypt = require('bcrypt');
-module.exports.index=(req,res)=>res.render('users/index',{
-    users: db.get('users').value()
+var cloudinary = require('cloudinary').v2;
+require('dotenv').config()
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.APIKEY,
+    api_secret: process.env.APISECRET
 });
+const bcrypt = require('bcrypt');
+module.exports.index=(req,res)=>{
+    res.render('users/index',{
+        users: db.get('users').value()
+    })
+};
 module.exports.create=(req,res)=>res.render('users/create');
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortid.generate();
@@ -26,6 +35,7 @@ module.exports.postCreate=(req,res)=>{
     db.get('users').push(req.body).write()
     res.redirect('/users');
 };
+
 module.exports.getUser=(req,res)=>{
     var id=req.params.id;
     var user=db.get('users').find({id: id}).value();
@@ -46,3 +56,31 @@ module.exports.postUpdate=(req,res)=>{
     db.get('users').find({id: idUser}).assign({name: req.body.name, phone: req.body.phone}).write()
     res.redirect('/users');
 };
+module.exports.profile=(req,res)=>{
+    let idUser=req.signedCookies.userId;
+    var user=db.get('users').find({id: idUser}).value()
+    if(!user.avatarUrl){
+        db.get('users').find({id: idUser}).assign({avatarUrl: "https://ramcotubular.com/wp-content/uploads/default-avatar.jpg"}).write()
+    }
+    res.render('users/profile',{user: user})
+};
+module.exports.postInfo=(req,res)=>{
+    console.log(req.body);
+    db.get('users').find({id: req.signedCookies.userId}).assign({name: req.body.name, phone: req.body.phone, email: req.body.email}).write()
+    res.redirect('/users');
+};   
+module.exports.avatar=(req,res)=>{
+    let idUser=req.signedCookies.userId;
+    var user=db.get('users').find({id: idUser}).value()
+    res.render('users/avatar',{user: user})
+};
+module.exports.postAvatar=async (req,res)=>{
+    let file = await cloudinary.uploader.upload(req.file.path);
+    const fs = require('fs')
+    fs.unlinkSync(req.file.path);
+    db.get("users").find({ id: req.signedCookies.userId }).assign({ avatarUrl: file.url }).write()
+    res.redirect('/users/profile');
+};
+
+
+   

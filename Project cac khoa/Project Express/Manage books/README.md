@@ -1,8 +1,12 @@
-# Project manage books v1.7
+# Project manage books v2.0
 ## What to do
-Bỗng dưng app của bạn được nhiều người dùng, tiếng lành đồn xa tới tai một nhà báo lá cải nghiệp dư tên Thông, anh ta quyết định tới gặp bạn để viết bài đăng lên blog của anh.
-Sau một ngày, lượng người đến nhà bạn thuê sách quá nhiều, dẫn đến trang web của bạn bị giật lag do danh sách user và transaction quá dài.
-Bạn quyết định implement chức năng pagination để giảm tải cho cả server lẫn trình duyệt.
+Khách hàng bắt đầu than phiền vì họ không được up avatar. Bạn quyết định làm tính năng upload avatar cho user.
+Bạn nghe những người xung quanh đồn thổi về một dịch vụ up ảnh lên cloud gọi là Cloudinary. Bạn quyết định đăng ký tài khoản và dùng thử nó.
+Nó có hỗ trợ API cho Node để có thể tải ảnh lên.
+Hãy làm một trang update profile cho user của bạn /profile, trong đó có form update thông tin người dùng, avatar hiện tại (nếu không có thì hiển thị 1 default avatar, bạn có thể tìm trên google image cả lố) và một đường link dẫn tới trang update avatar /profile/avatar.
+Trang update avatar có chứa avatar hiện tại và 1 form có file input để upload avatar mới, kèm theo nút Submit.
+Khi submit, file sẽ được gửi lên server, sau đó server sẽ upload lên Cloudinary (để tránh bị lộ service đang được dùng cho user, thêm nữa trong tương lai bạn có đổi dịch vụ không dùng Cloudinary nữa thì không phải update lại code phía client).
+Bạn lưu đường dẫn trả về từ Cloudinary vào 1 field avatarUrl
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -40,9 +44,14 @@ Một lý do nữa là bạn quên implement rate limiter để tránh bị brut
 21) Lưu lại số lần login sai của 1 người dùng vào field wrongLoginCount để nếu họ nhập sai lần thứ 4 trở đi, hệ thống sẽ không check hash nữa mà báo lỗi luôn (cái này không phải là rate limit)
 22) Thực hiện sign cho cookie
 Bạn nhận thấy app của mình không thể kiếm được tiền cho không có một tính năng gì đặc biệt. Tất cả những tính năng bạn đang làm bất cứ beginner nào cũng có thể làm được. Bạn ngồi vò đầu bứt tai suốt 1 tuần liền thì tự dưng bạn nghĩ ra: Nếu ta gửi mail cho người dùng khi tài khoản của họ bị login sai 3 lần liên tiếp thì họ sẽ vui sướng tới mức móc tiền ra trả để được sử dụng dịch vụ vì hệ thống của bạn bảo mật quá tốt.
-23)Đăng ký sử dụng một email API : nodemailer
+23) Đăng ký sử dụng một email API : nodemailer
+24) Bỗng dưng app của bạn được nhiều người dùng,
+  ttiếng lành đồn xa tới tai một nhà báo lá cải nghiệp dư tên Thông, anh ta quyết định tới gặp bạn để viết bài đăng lên blog của anh.
+Sau một ngày, lượng người đến nhà bạn thuê sách quá nhiều, dẫn đến trang web của bạn bị giật lag do danh sách user và transaction quá dài.
+Bạn quyết định implement chức năng pagination để giảm tải cho cả server lẫn trình duyệt.
 
-# hello-express
+  
+  # hello-express
 
 A server that serves a webpage, its resources, and some data
 
