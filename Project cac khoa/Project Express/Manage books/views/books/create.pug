@@ -2,11 +2,14 @@ extends ../layouts/common
 block content
   h1 Create book
 
-  form(action="/books/create", method="POST")
-    label Title
-    input(name="title", type="text")
-    br
-    label Description
-    input(name="description", type="text")
-    br
+  form(action="/books/create", method="POST",enctype="multipart/form-data")
+    .form-group
+      label(for="title") Title
+      input#title.form-control(name="title", type="text",style="width: 300px")
+    .form-group
+      label(for="description") Description
+      input#description.form-control(name="description", type="text",style="width: 300px")
+    .form-group
+      label(for="cover") Update Avatar
+      input#cover.form-control(name="cover", type="file",style="width: 300px")
     button Create

@@ -1,12 +1,12 @@
-/* this file is loaded by index.html and styles the page */
+/* this file is loaded by index.html and styles the page
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
   font-family: sans-serif;
-  margin: 2em 1em;
   line-height: 1.5em;
 }
 
@@ -53,4 +53,4 @@ footer {
   margin-top: 3em;
   padding-top: 1.5em;
   border-top: 1px solid lightgrey;
-}
+} */
