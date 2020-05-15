@@ -4,10 +4,13 @@ module.exports=(req,res,next)=>{
     if(!req.signedCookies.sessionId){
         var sessionId=shortid.generate();
         res.cookie('sessionId',sessionId,{
-            signed: true //de bao mat hon, nguoi dung khong chinh sua duoc
+            signed: true 
         });
+        db.get('sessions').push({id: sessionId}).write();
+        next();
 
     }
-    db.get('sessions').push({id: sessionId}).write()
-    next();
+    else{
+        next();
+    }
 }

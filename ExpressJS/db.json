@@ -647,6 +647,12 @@
     }
   ],
   "sessions": [
-
+    {
+      "id": "lp0CE_5zu",
+      "cart": {
+        "c3bbf6cd-b322-4e33-9324-2c2458eaeec7": 2,
+        "df00ec1d-d7f4-4674-b7b8-e63760671d5d": 2
+      }
+    }
   ]
 }
