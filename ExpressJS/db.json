@@ -26,11 +26,6 @@
       "id": "Z_cSKXXRB"
     },
     {
-      "name": "Minh Minh",
-      "phone": "02222334554",
-      "id": "iD8aWbWvF"
-    },
-    {
       "name": "XuanYen",
       "phone": "0755555",
       "id": "iD8aWbWvF",
@@ -653,6 +648,26 @@
         "c3bbf6cd-b322-4e33-9324-2c2458eaeec7": 2,
         "df00ec1d-d7f4-4674-b7b8-e63760671d5d": 2
       }
+    },
+    {
+      "id": "cPNXSvFL8"
+    },
+    {
+      "id": "cz0EbYGyH"
+    }
+  ],
+  "transfers": [
+    {
+      "id": "ZN5cHunsH",
+      "amount": 500000,
+      "accountId": "123456",
+      "userId": "iD8aWbWvF"
+    },
+    {
+      "id": "shG-_454i",
+      "amount": 10000,
+      "accountId": "x2635",
+      "userId": "iD8aWbWvF"
     }
   ]
 }

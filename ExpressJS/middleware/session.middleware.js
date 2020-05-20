@@ -8,7 +8,6 @@ module.exports=(req,res,next)=>{
         });
         db.get('sessions').push({id: sessionId}).write();
         next();
-
     }
     else{
         next();
