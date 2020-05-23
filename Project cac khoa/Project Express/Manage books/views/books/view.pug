@@ -7,6 +7,7 @@ block content
             a.btn.btn-light(href="/books/"+book.id+"/delete", style="color:black") Delete
             form(action="/books/"+book.id+"/update", method="POST")
                 input#name.form-control(name="title", type="text",placeholder=book.title)
-                .btn.btn-light Change title
+                button
+                    a.btn.btn-light Change title
         .col-4
             img(src=book.coverUrl, style="width: 300px, height: 300px")   

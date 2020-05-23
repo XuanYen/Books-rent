@@ -1,13 +1,6 @@
-# Project manage books v2.0
+# Project manage books v2.2
 ## What to do
-Một ngày nọ, bạn có kèo thơm với một công ty chuyển phát, bạn quyết định cho mọi người thuê online.
-Sau 1 tháng hoạt động, mở Google Analytics bạn nhận thấy nhiều người dùng mở trang web của bạn ra sau đó bỏ đi (bounce rate cao), bạn nhận ra rằng, yêu cầu người dùng luôn phải đăng nhập là một UX tồi.
-Bạn quyết định biến trang /books thành một trang không cần đăng nhập để người dùng có thể tự do xem bạn có sách gì để thuê, khi họ thấy hứng thú thì họ mới quyết định tạo tài khoản.
-1) Biến trang /books thành public
-2) Tạo bìa sách cho mỗi cuốn sách (gợi ý: coverUrl, dùng file upload)
-3) Làm chức năng thêm sách vào giỏ trước khi đăng nhập và giữ nguyên trong giỏ sau khi đã đăng nhập
-4) Nút thuê sách khi ấn vào thì toàn bộ sách sẽ được chuyển thành các transaction
-
+Áp dụng kiến thức đã học để chuyển sang dùng MongoDB + mongoose thay vì lowdb.
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -46,18 +39,24 @@ Một lý do nữa là bạn quên implement rate limiter để tránh bị brut
 22) Thực hiện sign cho cookie
 Bạn nhận thấy app của mình không thể kiếm được tiền cho không có một tính năng gì đặc biệt. Tất cả những tính năng bạn đang làm bất cứ beginner nào cũng có thể làm được. Bạn ngồi vò đầu bứt tai suốt 1 tuần liền thì tự dưng bạn nghĩ ra: Nếu ta gửi mail cho người dùng khi tài khoản của họ bị login sai 3 lần liên tiếp thì họ sẽ vui sướng tới mức móc tiền ra trả để được sử dụng dịch vụ vì hệ thống của bạn bảo mật quá tốt.
 23) Đăng ký sử dụng một email API : nodemailer
-24) Bỗng dưng app của bạn được nhiều người dùng,
-  ttiếng lành đồn xa tới tai một nhà báo lá cải nghiệp dư tên Thông, anh ta quyết định tới gặp bạn để viết bài đăng lên blog của anh.
+24) Bỗng dưng app của bạn được nhiều người dùng, tiếng lành đồn xa tới tai một nhà báo lá cải nghiệp dư tên Thông, anh ta quyết định tới gặp bạn để viết bài đăng lên blog của anh.
 Sau một ngày, lượng người đến nhà bạn thuê sách quá nhiều, dẫn đến trang web của bạn bị giật lag do danh sách user và transaction quá dài.
 Bạn quyết định implement chức năng pagination để giảm tải cho cả server lẫn trình duyệt.
-25) Khách hàng bắt đầu than phiền vì họ không được up avatar. Bạn quyết định làm tính năng upload avatar cho user.
+Khách hàng bắt đầu than phiền vì họ không được up avatar. Bạn quyết định làm tính năng upload avatar cho user.
 Bạn nghe những người xung quanh đồn thổi về một dịch vụ up ảnh lên cloud gọi là Cloudinary. Bạn quyết định đăng ký tài khoản và dùng thử nó.
 Nó có hỗ trợ API cho Node để có thể tải ảnh lên.
-Hãy làm một trang update profile cho user của bạn /profile, trong đó có form update thông tin người dùng, avatar hiện tại (nếu không có thì hiển thị 1 default avatar, bạn có thể tìm trên google image cả lố) và một đường link dẫn tới trang update avatar /profile/avatar.
-Trang update avatar có chứa avatar hiện tại và 1 form có file input để upload avatar mới, kèm theo nút Submit.
-Khi submit, file sẽ được gửi lên server, sau đó server sẽ upload lên Cloudinary (để tránh bị lộ service đang được dùng cho user, thêm nữa trong tương lai bạn có đổi dịch vụ không dùng Cloudinary nữa thì không phải update lại code phía client).
+25) Hãy làm một trang update profile cho user của bạn /profile, trong đó có form update thông tin người dùng, avatar hiện tại (nếu không có thì hiển thị 1 default avatar, bạn có thể tìm trên google image cả lố) và một đường link dẫn tới trang update avatar /profile/avatar.
+26) Trang update avatar có chứa avatar hiện tại và 1 form có file input để upload avatar mới, kèm theo nút Submit.
+27) Khi submit, file sẽ được gửi lên server, sau đó server sẽ upload lên Cloudinary (để tránh bị lộ service đang được dùng cho user, thêm nữa trong tương lai bạn có đổi dịch vụ không dùng Cloudinary nữa thì không phải update lại code phía client).
 Bạn lưu đường dẫn trả về từ Cloudinary vào 1 field avatarUrl
-  
+Một ngày nọ, bạn có kèo thơm với một công ty chuyển phát, bạn quyết định cho mọi người thuê online.
+Sau 1 tháng hoạt động, mở Google Analytics bạn nhận thấy nhiều người dùng mở trang web của bạn ra sau đó bỏ đi (bounce rate cao), bạn nhận ra rằng, yêu cầu người dùng luôn phải đăng nhập là một UX tồi.
+Bạn quyết định biến trang /books thành một trang không cần đăng nhập để người dùng có thể tự do xem bạn có sách gì để thuê, khi họ thấy hứng thú thì họ mới quyết định tạo tài khoản.
+28) Biến trang /books thành public
+29) Tạo bìa sách cho mỗi cuốn sách (gợi ý: coverUrl, dùng file upload)
+30) Làm chức năng thêm sách vào giỏ trước khi đăng nhập và giữ nguyên trong giỏ sau khi đã đăng nhập
+31) Nút thuê sách khi ấn vào thì toàn bộ sách sẽ được chuyển thành các transaction
+
   # hello-express
 
 A server that serves a webpage, its resources, and some data

@@ -1,13 +1,15 @@
+const User = require("../models/user.model.js");
 const sendEmail = require("../utils/sendEmail");
-var db=require('../db');
+//var db=require('../db');
 const bcrypt = require('bcrypt')
 module.exports.login=(req,res)=>res.render('auth/login');
-module.exports.postLogin=(req,res)=>{
+module.exports.postLogin=async (req,res)=>{
     var email=req.body.email;
     var password=req.body.password;
     var salt = bcrypt.genSaltSync(10)
-    var hash = bcrypt.hashSync(password, salt)
-    var user=db.get("users").find({email: email}).value();
+    var hash = bcrypt.hashSync(password, salt);
+    var user=await User.findOne({email})
+    //var user=db.get("users").find({email: email}).value();
     if(!user){
         res.render('auth/login',{
             errors:[
@@ -30,7 +32,8 @@ module.exports.postLogin=(req,res)=>{
     var temp=bcrypt.compareSync(user.password, hash);
     if(!temp){
         wrongLoginCount=wrongLoginCount+1;
-        db.get("users").find({email: email}).assign({wrongLoginCount: wrongLoginCount}).write();
+        await User.findByIdAndUpdate(user._id,{wrongLoginCount: wrongLoginCount})
+        //db.get("users").find({email: email}).assign({wrongLoginCount: wrongLoginCount}).write();
             res.render('auth/login',{
                 errors: [
                     'Wrong password'
@@ -39,7 +42,7 @@ module.exports.postLogin=(req,res)=>{
                 });
         return;
     }
-    res.cookie('userId', user.id,{
+    res.cookie('userId', user._id,{
         signed: true
     });
     if (!user.isAdmin){

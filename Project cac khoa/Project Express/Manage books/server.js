@@ -3,11 +3,15 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require("express");
-const app = express();
-const bodyParser = require('body-parser');
-const port=3000;
 require('dotenv').config()
+const express = require("express");
+const bodyParser = require('body-parser');
+const app = express();
+var mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
+mongoose.set("useUnifiedTopology", true);
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+
 var bookRoute=require("./routes/book.route");
 var userRoute=require("./routes/user.route");
 var transactionRoute=require("./routes/transaction.route")
@@ -21,7 +25,8 @@ var sessionMiddleware=require('./middleware/session.middleware');
 
 var cookieParser = require('cookie-parser')
 
-app.use(cookieParser(process.env.SESSION_SECRET))
+app.use(cookieParser(process.env.SESSION_SECRET));
+
 app.set('view engine', 'pug');
 app.set('views','./views'); 
 
