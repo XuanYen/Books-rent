@@ -3,7 +3,11 @@ const express=require('express');
 const bodyParser= require('body-parser');
 var cookieParser= require('cookie-parser');
 var csurf = require('csurf');
-const app=express();
+
+var mongoose = require('mongoose');
+mongoose.set("useUnifiedTopology", true);
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+
 var userRoute=require("./routes/user.route");
 var authRoute=require('./routes/auth.route');
 var productRoute=require('./routes/product.route');
@@ -14,6 +18,7 @@ var authMiddleware=require("./middleware/auth.middleware");
 var sessionMiddleware=require('./middleware/session.middleware');
 const port=3000;
 
+const app=express();
 app.set('view engine', 'pug');
 app.set('views','./views'); 
 
