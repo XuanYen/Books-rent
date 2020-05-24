@@ -13,6 +13,7 @@ var authRoute=require('./routes/auth.route');
 var productRoute=require('./routes/product.route');
 var cartRoute=require('./routes/cart.route');
 var transferRoute=require('./routes/transfer.route');
+var apiProductRoute=require('./api/routes/product.route');
 
 var authMiddleware=require("./middleware/auth.middleware");
 var sessionMiddleware=require('./middleware/session.middleware');
@@ -41,5 +42,6 @@ app.use(csurf({cookie: true}));
 app.use('/products', productRoute);
 app.use('/cart',cartRoute);
 app.use('/transfer',authMiddleware.requireAuth,transferRoute)
+app.use('/api/products',apiProductRoute);
 
 app.listen(port,()=>console.log('server listening on port'+port));
