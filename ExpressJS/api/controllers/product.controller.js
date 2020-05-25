@@ -5,3 +5,8 @@ module.exports.index=(async (req,res)=>{
     res.json(products);
     //method này nhận vào object/array và biến đổi thành json string trả về client
 });
+
+module.exports.create= async (req,res)=>{
+    var product=await Product.create(req.body);
+    res.json(product);
+}
