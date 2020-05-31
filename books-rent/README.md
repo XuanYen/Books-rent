@@ -1,4 +1,8 @@
 # Project manage books v2.4
+## Account Admin for demo
+account: thanhduon@gmail.com
+password: 123123
+## Note: Db.json is of lowdb. Present using Mongodb
 ## What to do
 Khi code server của bạn có lỗi gì đó như truy cập một property nào đó của một giá trị undefined, nó sẽ throw lỗi và server sẽ tự động render trang error cho status 500.
 1) Thử viết đoạn code sau vào một controller bất kì var a; a.b();
