@@ -1,6 +1,7 @@
-# Project manage books v2.2
+# Project manage books v2.3
 ## What to do
-Áp dụng kiến thức đã học để chuyển sang dùng MongoDB + mongoose thay vì lowdb.
+Bạn quyết định làm đầy đủ chức năng cho mobile app
+
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
 2) Đảm bảo có đủ chức năng:
@@ -56,7 +57,12 @@ Bạn quyết định biến trang /books thành một trang không cần đăng
 29) Tạo bìa sách cho mỗi cuốn sách (gợi ý: coverUrl, dùng file upload)
 30) Làm chức năng thêm sách vào giỏ trước khi đăng nhập và giữ nguyên trong giỏ sau khi đã đăng nhập
 31) Nút thuê sách khi ấn vào thì toàn bộ sách sẽ được chuyển thành các transaction
-
+32) Áp dụng kiến thức đã học để chuyển sang dùng MongoDB + mongoose thay vì lowdb.
+33) Sau khi đã chạy bản web một thời gian, bạn nghĩ đến việc làm app cho mobile, bạn thuê được một anh chàng làm mobile từ Silicon Valley, bạn đảm nhận phần REST API.
+Hai bên lên plan và quyết định chỉ làm 2 tính năng: đăng nhập + xem các transaction.
+Áp dụng kiến thức đã học ở bài REST API để tạo ra các endpoint sau:
+POST /api/login
+GET /api/transactions
   # hello-express
 
 A server that serves a webpage, its resources, and some data

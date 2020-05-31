@@ -12,6 +12,11 @@ mongoose.set('useFindAndModify', false);
 mongoose.set("useUnifiedTopology", true);
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
 
+var apiLoginRoute = require("./api/routes/login.route.js");
+var apiTransactionRoute = require("./api/routes/transaction.route.js");
+var apiBook=require("./api/routes/book.route");
+var apiUser=require("./api/routes/user.route");
+
 var bookRoute=require("./routes/book.route");
 var userRoute=require("./routes/user.route");
 var transactionRoute=require("./routes/transaction.route")
@@ -44,6 +49,11 @@ app.use('/users',authMiddleware.requireAuth,adminMiddleware.requireAdmin(true), 
 app.use('/transactions',authMiddleware.requireAuth,adminMiddleware.requireAdmin(true),transactionRoute);
 app.use('/transaction', authMiddleware.requireAuth, adminMiddleware.requireAdmin(false), menuRoute)
 app.use('/cart',cartRoute);
+
+app.use("/api", apiLoginRoute);
+app.use("/api", apiTransactionRoute);
+app.use("/api", apiBook);
+app.use("/api", apiUser);
 // listen for requests :)
 app.listen(3000,()=>console.log('server listening on port'+3000));
 
