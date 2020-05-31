@@ -1,0 +1,10 @@
+extends ../layouts/common
+block content
+  h1 Update user info
+  form(action="/users/"+user.id+"/update", method="POST")
+          label Name
+          input(name="name", type="text")
+          label Phone
+          input(name="phone", type="text")
+          button Update
+

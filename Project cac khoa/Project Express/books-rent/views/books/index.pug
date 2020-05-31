@@ -1,0 +1,19 @@
+extends ../layouts/common
+block content
+  h1 Books
+
+  a.btn.btn-primary(href="/books/create") Create new book
+
+  table.table
+        tr
+          th Title
+          th Cover
+          th Action
+        each book in books
+         tr
+           td=book.title
+           td
+            img(src=book.coverUrl, style="width: 40px; height: 40px")
+           td
+            a.btn.btn-light(href="/books/"+book.id) View
+            a.btn.btn-primary(href="/cart/add/"+book.id) Add to cart

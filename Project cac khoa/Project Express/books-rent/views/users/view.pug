@@ -1,0 +1,11 @@
+extends ../layouts/common
+block content
+  span Name:
+      span= user.name
+  br
+  span Phone:
+      span=user.phone
+  br
+  a.btn.btn-light(href="/users/"+user.id+"/delete", style="color:black") Delete
+  a.btn.btn-light(href="/users/"+user.id+"/update", style="color:black") Update
+

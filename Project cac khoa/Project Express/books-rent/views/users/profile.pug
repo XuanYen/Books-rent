@@ -1,0 +1,22 @@
+extends ../layouts/common
+block content
+  h1 
+    span=user.name 
+    span 's profile
+  .row
+    .col-4
+        form(action="/users/profile", method="POST")
+            .form-group
+                label(for="name") Name
+                input#name.form-control(name="name", type="text",style="width: 300px",placeholder=user.name)
+            .form-group
+                label(for="phone") Phone
+                input#phone.form-control(name="phone", type="text",style="width: 300px",placeholder=user.phone)
+            .form-group
+                label(for="email") Email
+                input#email.form-control(name="email", type="text",style="width: 300px",placeholder=user.email)
+            button.btn.btn-primary Update info
+    .col-4
+        img(src=user.avatarUrl)
+        a.btn.btn-light(href="/users/profile/avatar") Update Avatar
+        
