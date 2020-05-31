@@ -1,6 +1,6 @@
 //var db=require('../db');
 var Product=require('../models/product.model');
-module.exports.index=(async (req,res)=>{
+module.exports.index=(async (req,res,next)=>{
     /*var page=parseInt(req.query.page) || 1 //n
     var perPage=8; //x
     var start=(page-1)*perPage;
@@ -15,8 +15,12 @@ module.exports.index=(async (req,res)=>{
     })
     */
    //Product.find() tra ve promise
-    var products=await Product.find();
-    res.render('products/index',{
-       products: products
-    });
+    try{
+        var products=await Product.find();
+        res.render('products/index',{
+            products: products
+        });
+    } catch (error){
+        next(error);
+    }
 });
