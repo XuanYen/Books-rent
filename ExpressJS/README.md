@@ -26,3 +26,6 @@
 ## Bai 24. Install MongoDB
 ## Bai 25. Gioi thieu Mongoose
 ## Bai 26. HTTP API
+## Bai 27. Rest API
+## Bai 28. Error handling
+## Bai 29. Deploy Heroku
