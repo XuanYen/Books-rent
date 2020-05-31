@@ -1,5 +1,5 @@
 const User = require("../../models/user.model.js");
-const sendEmail = require("../utils/sendEmail");
+const sendEmail = require("../../utils/sendEmail");
 const bcrypt = require('bcrypt')
 
 module.exports.postLogin=async (req,res)=>{

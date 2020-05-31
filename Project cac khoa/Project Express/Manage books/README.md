@@ -1,6 +1,9 @@
-# Project manage books v2.3
+# Project manage books v2.4
 ## What to do
-Bạn quyết định làm đầy đủ chức năng cho mobile app
+Khi code server của bạn có lỗi gì đó như truy cập một property nào đó của một giá trị undefined, nó sẽ throw lỗi và server sẽ tự động render trang error cho status 500.
+1) Thử viết đoạn code sau vào một controller bất kì var a; a.b();
+2) Mở route tương ứng trên trình duyệt xem lỗi ra sao
+3) Viết 1 trang hiển thị lỗi 500 một cách đẹp mắt hơn
 
 ## What I did
 1) Tạo một trang quản lý sách mà bạn có (route /books)
@@ -63,6 +66,7 @@ Hai bên lên plan và quyết định chỉ làm 2 tính năng: đăng nhập +
 Áp dụng kiến thức đã học ở bài REST API để tạo ra các endpoint sau:
 POST /api/login
 GET /api/transactions
+34) Bạn quyết định làm đầy đủ chức năng cho mobile app
   # hello-express
 
 A server that serves a webpage, its resources, and some data

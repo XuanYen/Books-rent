@@ -8,10 +8,18 @@ cloudinary.config({
     api_key: process.env.APIKEY,
     api_secret: process.env.APISECRET
 });
-module.exports.index=async (req,res)=>res.render('books/index',{
-    books: await Book.find()
-    //books: db.get('books').value()
-});
+module.exports.index=async (req,res,next)=>{
+    try{
+        //var a; a.b(); Test handling error
+        res.render('books/index',{
+            books: await Book.find()
+            //books: db.get('books').value()
+        });
+    }catch (error){
+        res.render('error',{error: error})
+        next();
+    }
+};
 module.exports.create=(req,res)=>res.render('books/create');
 module.exports.postCreate=async (req,res)=>{
     let file = await cloudinary.uploader.upload(req.file.path);
