@@ -2,6 +2,9 @@
 ## Account Admin for demo
 account: thanhduon@gmail.com
 password: 123123
+## Link glitch
+https://glitch.com/~books-rent-yen
+Glitch is not perfect selection for test, because crud with db of it not work efficiently
 ## Note: Db.json is of lowdb. Present using Mongodb
 ## What to do
 Khi code server của bạn có lỗi gì đó như truy cập một property nào đó của một giá trị undefined, nó sẽ throw lỗi và server sẽ tự động render trang error cho status 500.
