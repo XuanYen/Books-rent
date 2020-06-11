@@ -2,6 +2,8 @@
 ## Account Admin for demo
 account: thanhduon@gmail.com
 password: 123123
+## Link heroku
+https://books-rent.herokuapp.com/
 ## Link glitch
 https://glitch.com/~books-rent-yen
 Glitch is not perfect selection for test, because crud with db of it not work efficiently
